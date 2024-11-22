@@ -43,7 +43,7 @@ def data_convet_to_heatmap(df_temp: pd.DataFrame, max_uniq=6, lista_colonne=None
             else:
                 print(f'Converto {colonna} aggiungendo {len(uniq)} colonne, con valore 0 o 1')
                 for u in uniq:
-                    df_temp[u] = df_temp[colonna].apply(lambda x: 1 if u in x else 0)
+                    df_temp[colonna+'-'+u] = df_temp[colonna].apply(lambda x: 1 if u in x else 0)
                 df_temp.drop(colonna, axis=1, inplace=True)
         else:
             print(f"Elimino: {colonna}, len: {len(uniq)}, {type(uniq[0])}")
